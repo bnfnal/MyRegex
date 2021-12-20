@@ -13,11 +13,11 @@ import javax.swing.text.DefaultHighlighter
 
 class Regex: JFrame() {
     val minSz = Dimension(600, 600)
-    val btnChooze: JButton
-    val btnFind: JButton
-    var lbl: JLabel
-    var tf: JTextField
-    var ta: JTextArea
+    private val btnChooze: JButton
+    private val btnFind: JButton
+    private var lbl: JLabel
+    private var tf: JTextField
+    private var ta: JTextArea
 
     private var textFromFile = """"""
     private var words: MutableList<String> = mutableListOf()

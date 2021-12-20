@@ -57,29 +57,30 @@ class Regex: JFrame() {
         btnFind.addMouseListener(object : MouseAdapter(){
             override fun mouseClicked(e: MouseEvent?) {
                 if (e?.button == 1) {
-                    if (textFromFile != null && textFromFile != "") {
-                        ta.getHighlighter().removeAllHighlights()
-                        ta.grabFocus()
-                        if (tf.text != null && tf.text != "" ){
-                            val s = tf.text.toString()
-                            words = s.split(" ").toMutableList()
-                            pattern = """"""
-                            for (i in 0 until words.size) {
-                                if (i > 0) pattern += """|"""
-                                pattern +=
-                                    """(?<=\b)(?:(?:[A-Za-zА-Яа-я0-9]+)?""" + words[i] + """(?:[A-Za-zА-Яа-я0-9]+)?)(?=\b)"""
-                            }
-                            val p = Pattern.compile(pattern, Pattern.MULTILINE or Pattern.UNICODE_CHARACTER_CLASS)
-                            val m = p.matcher(ta.text)
-                            while (m.find()){
-                                ta.getHighlighter().addHighlight(m.start(), m.end(), painter);
-                            }
+                    if (ta.text != null && textFromFile != "") {
+//                  if (textFromFile.isNotEmpty())
+                            ta.getHighlighter().removeAllHighlights()
                             ta.grabFocus()
+                            if (tf.text != null && tf.text != "" ){
+                                val s = tf.text.toString()
+                                words = s.split(" ").toMutableList()
+                                pattern = """"""
+                                for (i in 0 until words.size) {
+                                    if (i > 0) pattern += """|"""
+                                    pattern +=
+                                        """(?<=\b)(?:(?:[A-Za-zА-Яа-я0-9]+)?""" + words[i] + """(?:[A-Za-zА-Яа-я0-9]+)?)(?=\b)"""
+                                }
+                                val p = Pattern.compile(pattern, Pattern.MULTILINE or Pattern.UNICODE_CHARACTER_CLASS)
+                                val m = p.matcher(ta.text)
+                                while (m.find()){
+                                    ta.getHighlighter().addHighlight(m.start(), m.end(), painter);
+                                }
+                                ta.grabFocus()
+                            }
                         }
                     }
 
                 }
-            }
         })
 
         addComponentListener(object : ComponentAdapter(){
